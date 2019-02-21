@@ -21,12 +21,7 @@ def setup():
     sprites.append(Raindrop(100, 200, enemyTeam))
     sprites.append(Raindrop(150, 200, enemyTeam))
     sprites.append(Raindrop(200, 200, enemyTeam))
-    sprites.append(Raindrop(250, 200, enemyTeam))
-    sprites.append(Raindrop(300, 200, enemyTeam))
-    sprites.append(Raindrop(350, 200, enemyTeam))
-    sprites.append(Raindrop(400, 200, enemyTeam))
-    sprites.append(Raindrop(450, 200, enemyTeam))
-    sprites.append(Raindrop(500, 200, enemyTeam))
+
                     
 def draw():
     global player, sprites
