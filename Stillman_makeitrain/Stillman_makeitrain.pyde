@@ -4,6 +4,7 @@ from Enemy import Enemy
 from Player import Player
 from SpriteManager import sprites
 from Raindrop import Raindrop
+import SpriteManager
 
 def setup():
     print "Built with Processing Python version " + platform.python_version()
@@ -12,42 +13,17 @@ def setup():
     size(500, 500)
     playerTeam = 1
     enemyTeam = 2
-    player = Player(width/2, height/2, playerTeam)
-    
-    sprites.append(player)
-    sprites.append(Enemy(50, 50, enemyTeam))
-    sprites.append(Enemy(150, 150, enemyTeam))
-    sprites.append(Raindrop(50, 200, enemyTeam))
-    sprites.append(Raindrop(100, 200, enemyTeam))
-    sprites.append(Raindrop(150, 200, enemyTeam))
-    sprites.append(Raindrop(200, 200, enemyTeam))
-
+    player = Player(width/2, height/2, 1)
+    SpriteManager.setPlayer(player)
+    SpriteManager.spawn(Enemy(200,100, 2))
                     
 def draw():
     global player, sprites
-    background(255)    
-
-    for sprite in sprites:
-        sprite.animate()
-        
-    checkCollisions()
-    
-def checkCollisions():
-    global sprites
-    for a in sprites:
-        for b in sprites:
-            if a.team != b.team:
-                d = (pow(a.x - b.x, 2) + pow(a.y - b.y, 2))**(0.5)
-                r1 = a.diameter / 2
-                r2 = b.diameter / 2
-                if(r1 + r2 > d):
-                    sprites.remove(a)
-                    sprites.remove(b)
+    background(255)   
+    SpriteManager.animate()
     
 def keyPressed():
-    global player
-    player.keyDown()    
+    SpriteManager.player.keyDown()   
         
 def keyReleased():
-    global player
-    player.keyUp()
+    SpriteManager.player.keyUp()

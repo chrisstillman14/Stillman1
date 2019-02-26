@@ -9,6 +9,7 @@ class Raindrop:
         self.y = y
         self.team = team
         
+        
     def move(self):
         self.y += self.speed
         if self.y < 0:
