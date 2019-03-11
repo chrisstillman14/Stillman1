@@ -24,7 +24,8 @@ class Enemy(Sprite):
         d = ((self.x - target.x)**2 + (self.y - target.y)**2)**.5
         xVec = xcomp/d
         yVec = ycomp/d
-        return PVector(xVec,yVec)
+        magnitude = 7
+        return PVector(xVec * magnitude,yVec * magnitude)
     
     def fire(self, vector) :
          
