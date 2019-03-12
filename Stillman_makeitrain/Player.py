@@ -1,6 +1,9 @@
 import SpriteManager
-from Bullet import Bullet
 from Sprite import Sprite
+from Bullet import Bullet
+mark = 0
+wait = 1000
+go = True
 
 class Player(Sprite):
     
@@ -13,8 +16,8 @@ class Player(Sprite):
     diameter = 50
     c = color(255,0,0)
     
-    def handleCollision(self):
-        pass
+    #def handleCollision(self):
+        #pass
         
     def move(self):
         if self.left:

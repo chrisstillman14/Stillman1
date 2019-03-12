@@ -22,25 +22,15 @@ def setup():
     SpriteManager.setPlayer(player)
     SpriteManager.spawn(Enemy(200,100, 2))
     SpriteManager.spawn(JiggleBot(200, 50, 2 ))
+    SpriteManager.spawn(Raindrop(250, 50, 2))
     
                     
 def draw():
     global player, sprites
     background(255)   
     SpriteManager.animate()
-    global go, mark, wait
-    if(millis() - mark > wait):
-        go = not go
-        mark = millis()
-        
-    if(go):
-        fill(255,0,0)
-    else:
-        fill(0,255,0)
-        
-    ellipse (250,250,50,50)
-        
-        
+    
+    
     
 def keyPressed():
     SpriteManager.player.keyDown()   
