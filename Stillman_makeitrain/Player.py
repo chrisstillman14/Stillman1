@@ -1,6 +1,9 @@
 import SpriteManager
 from Sprite import Sprite
 from Bullet import Bullet
+from PeaShooter import PeaShooter
+from Shooter import Shooter
+from MissileShooter import MissileShooter
 mark = 0
 wait = 1000
 go = True
@@ -14,10 +17,20 @@ class Player(Sprite):
     down = False
     speed = 5
     diameter = 50
-    c = color(255,0,0)
+    c = color(9, 113, 183)
     
-    #def handleCollision(self):
-        #pass
+    def handleCollision(self):
+        pass
+        
+    def __init__(self, x, y, team):
+        Sprite.__init__(self, x, y, team)
+        self.primaryWeapon = MissileShooter(self)
+        
+    def fire(self, vector = None):
+        if vector is None:
+            self.primaryWeapon.shoot(PVector(0, -10))
+        else: 
+            self.primaryWeapon.shoot(vector)
         
     def move(self):
         if self.left:
@@ -33,7 +46,7 @@ class Player(Sprite):
 
     def keyDown(self):
         if key == 'f' or key == 'F':
-            SpriteManager.spawn(Bullet(self.x, self.y, PVector(0, -10), self.team))
+            self.fire()
     
         if keyCode == LEFT:
             self.left = True

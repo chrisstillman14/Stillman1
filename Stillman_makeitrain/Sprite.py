@@ -10,7 +10,7 @@ class Sprite(object):
         self.y = y
         self.team = team
         
-    def move():
+    def move(self):
         pass
     
     def display(self):
